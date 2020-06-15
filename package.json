@@ -1,0 +1,25 @@
+{
+  "name": "dndgrid",
+  "version": "1.0.0",
+  "description": "Socket drag and drop application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "sockets",
+    "node",
+    "dnd"
+  ],
+  "author": "Andy Durette",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "firebase": "^7.15.1",
+    "socket.io": "^2.1.1"
+  },
+  "engine": {
+    "node": "8.11.3"
+  }
+}
