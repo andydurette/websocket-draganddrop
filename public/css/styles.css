@@ -29,7 +29,7 @@ body {
   background-color: #444;
   color: #fff;
   border:1px solid white;
-  font-size: 150%;  
+  font-size: 1rem;  
 }
 
 
@@ -77,9 +77,9 @@ body {
 
 #optionsBar{
   position:fixed;
-  right:-261px;
+  right:-201px;
   top:0;
-  width:261px;
+  width:201px;
   height:100vh;
   background-color:#444;
   -webkit-transition: right 1s;
@@ -92,12 +92,12 @@ body {
   top: 0;
   height:100vh;
   overflow-y:scroll;
-  width: 261px;
+  width: 201px;
 }
 
 .wrapper2 .box{
 float:left;
-width:calc(120px);
+width:90px;
 height:10vh;
 }
 
