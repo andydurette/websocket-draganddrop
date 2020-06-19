@@ -1,24 +1,24 @@
-var express = require('express');
-
-var app = express();
-//var server = app.listen(3000);
-var port = 3001;
-var server = app.listen(process.env.PORT || port)
+let dotConfig = require('dotenv').config();
+let express = require('express');
+let app = express();
+//let server = app.listen(3000);
+let port = 3001;
+let server = app.listen(process.env.PORT || port)
 
 app.use(express.static('public'));
 console.log("Mysocket server is now running");
 
-var socket = require('socket.io');
-var io = socket(server);
+let socket = require('socket.io');
+let io = socket(server);
 io.sockets.on('connection', locationSocket);
 io.sockets.on('connection', textSocket);
 
-var firebase = require("firebase");
+let firebase = require("firebase");
 
 // Initialize Firebase
 // TODO: Replace with your project's customized code snippet
-var config = {
-  apiKey: "AIzaSyCSAdizRZC_8MxO5HUKS6zaSWT3jD0Pjwg",
+let config = {
+  apiKey: dotConfig.parsed.DB_API,
   authDomain: "dnd-grid.firebaseapp.com",
   databaseURL: "https://dnd-grid.firebaseio.com",
   projectId: "dnd-grid",
@@ -40,9 +40,9 @@ function locationSocket(socket){
     firebase.database().ref("Position/-LS7kbA73Ekn1TtyfbH4/tiles").once('value', function(snap){
       snap.forEach(function(childNodes){
         if(childNodes.val().id == data.s){
-        var p = String(parseInt(childNodes.val().id.substring(4))-1);
-        var db = firebase.database();
-        var ref = db.ref(`Position/-LS7kbA73Ekn1TtyfbH4/tiles/${p}`);
+        let p = String(parseInt(childNodes.val().id.substring(4))-1);
+        let db = firebase.database();
+        let ref = db.ref(`Position/-LS7kbA73Ekn1TtyfbH4/tiles/${p}`);
         console.log(p);
         ref.update({location: data.t});
         }
@@ -62,9 +62,9 @@ function textSocket(socket){
   // firebase.database().ref("Position/-LS7kbA73Ekn1TtyfbH4/tiles").once('value', function(snap){
   //   snap.forEach(function(childNodes){
   //     if(childNodes.val().id == data.p){
-  //     var p = String(parseInt(childNodes.val().id.substring(4))-1);
-  //     var db = firebase.database();
-  //     var ref = db.ref(`Position/-LS7kbA73Ekn1TtyfbH4/tiles/${p}`);
+  //     let p = String(parseInt(childNodes.val().id.substring(4))-1);
+  //     let db = firebase.database();
+  //     let ref = db.ref(`Position/-LS7kbA73Ekn1TtyfbH4/tiles/${p}`);
   //     console.log(p);
   //     ref.update({text: data.t});
   //     }
@@ -75,12 +75,12 @@ function textSocket(socket){
 
 
 /* Get a database reference to our blog
-var db = firebase.database();
-var ref = db.ref("Position/-LS7kbA73Ekn1TtyfbH4/tiles");
+let db = firebase.database();
+let ref = db.ref("Position/-LS7kbA73Ekn1TtyfbH4/tiles");
 
-var i;
+let i;
   for (i = 0; i < 21; i++) { 
-    var usersRef = ref.child(i);
+    let usersRef = ref.child(i);
     usersRef.set({
       id: `tile${i+1}`,
       location: `w1-box${i+1}`,
