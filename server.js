@@ -1,4 +1,7 @@
-let dotConfig = require('dotenv').config();
+require('dotenv').config();
+
+
+
 let express = require('express');
 let app = express();
 //let server = app.listen(3000);
@@ -18,7 +21,7 @@ let firebase = require("firebase");
 // Initialize Firebase
 // TODO: Replace with your project's customized code snippet
 let config = {
-  apiKey: dotConfig.parsed.DB_API,
+  apiKey: process.env.DB_API,
   authDomain: "dnd-grid.firebaseapp.com",
   databaseURL: "https://dnd-grid.firebaseio.com",
   projectId: "dnd-grid",
